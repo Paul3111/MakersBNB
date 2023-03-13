@@ -36,96 +36,95 @@ I want to be able to mark a space as "booked" for a specific date and make the s
 
 Nouns:
 
-owner, space, description, price, availability_date, status (values: pending, approved, rejected), 
+owner, customer, property, description, price, avail_date, status (values: pending, approved, rejected)
 
 2. Infer the Table Name and Columns
 
 Put the different nouns in this table. Replace the example with your own nouns.
-Record 	Properties
-album 	title, release year
-artist 	name
-
-    Name of the first table (always plural): albums
-
-    Column names: title, release_year
-
-    Name of the second table (always plural): artists
-
-    Column names: name
+TABLES      COLUMNS
+properties 	property_name, property_description, property_price, property_avail_date, property_status, owner_id
+customers 	customer_name, customer_email
+owners      owner_name, owner_email
+bookings    property_id, customer_id, booking_date, booking_status
 
 3. Decide the column types.
 
-Here's a full documentation of PostgreSQL data types.
-
-Most of the time, you'll need either text, int, bigint, numeric, or boolean. If you're in doubt, do some research or ask your peers.
-
-Remember to always have the primary key id as a first column. Its type will always be SERIAL.
-
 # EXAMPLE:
+# DATE format: 2023-03-11
 
-Table: albums
-id: SERIAL
-title: text
-release_year: int
+# Database name: makersbnb_test
 
-Table: artists
-id: SERIAL
-name: text
+Table: properties
+id: SERIAL PRIMARY KEY,
+property_name: TEXT,
+property_description: TEXT,
+property_price: FLOAT,
+property_avail_date: DATE,
+property_status: TEXT,
+owner_id: INT
+
+Table: customers
+id: SERIAL PRIMARY KEY,
+customer_name: TEXT,
+customer_email: TEXT
+
+Table: owners
+id: SERIAL PRIMARY KEY,
+owner_name: TEXT,
+owner_email: TEXT
+
+Table: bookings
+id: SERIAL PRIMARY KEY,
+property_id: INT,
+customer_id: INT,
+booking_date: DATE,
+booking_status: TEXT
 
 4. Decide on The Tables Relationship
 
 Most of the time, you'll be using a one-to-many relationship, and will need a foreign key on one of the two tables.
 
-To decide on which one, answer these two questions:
+    Can one PROPERTY have many OWNER/CUSTOMERS? (No)
+    Can one OWNER have many PROPERTIES? (Yes)
+    Can one CUSTOMER book many PROPERTIES? (No)
 
-    Can one [TABLE ONE] have many [TABLE TWO]? (Yes/No)
-    Can one [TABLE TWO] have many [TABLE ONE]? (Yes/No)
-
-You'll then be able to say that:
-
-    [A] has many [B]
-    And on the other side, [B] belongs to [A]
-    In that case, the foreign key is in the table [B]
-
-Replace the relevant bits in this example with your own:
-
-# EXAMPLE
-
-1. Can one artist have many albums? YES
-2. Can one album have many artists? NO
-
--> Therefore,
--> An artist HAS MANY albums
--> An album BELONGS TO an artist
-
--> Therefore, the foreign key is on the albums table.
-
-If you can answer YES to the two questions, you'll probably have to implement a Many-to-Many relationship, which is more complex and needs a third table (called a join table).
 4. Write the SQL.
 
--- EXAMPLE
--- file: albums_table.sql
+-- file: seeds_init.sql
 
--- Replace the table name, columm names and types.
-
--- Create the table without the foreign key first.
-CREATE TABLE artists (
-  id SERIAL PRIMARY KEY,
-  name text,
+CREATE TABLE customers (
+    id: SERIAL PRIMARY KEY,
+    customer_name: TEXT,
+    customer_email: TEXT
 );
 
--- Then the table with the foreign key first.
-CREATE TABLE albums (
-  id SERIAL PRIMARY KEY,
-  title text,
-  release_year int,
--- The foreign key name is always {other_table_singular}_id
-  artist_id int,
-  constraint fk_artist foreign key(artist_id)
-    references artists(id)
-    on delete cascade
+CREATE TABLE owners (
+    id: SERIAL PRIMARY KEY,
+    owner_name: TEXT,
+    owner_email: TEXT
+);
+
+CREATE TABLE bookings (
+    id: SERIAL PRIMARY KEY,
+    booking_date: DATE,
+    booking_status: TEXT,
+    property_id: INT,
+    customer_id: INT,
+    constraint fk_customer foreign key(customer_id) references customers(id) on delete cascade,
+    constraint fk_property foreign key(property_id) references properties(id) on delete cascade
+);
+
+CREATE TABLE properties (
+    id: SERIAL PRIMARY KEY,
+    property_name: TEXT,
+    property_description: TEXT,
+    property_price: FLOAT,
+    property_avail_date: DATE,
+    property_status: TEXT,
+    owner_id: INT,
+    constraint fk_owner foreign key(owner_id) references owners(id) on delete cascade
 );
 
 5. Create the tables.
 
-psql -h 127.0.0.1 database_name < albums_table.sql
+psql -h 127.0.0.1 makersbnb_test < spec/seeds_init.sql
