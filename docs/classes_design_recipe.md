@@ -172,30 +172,6 @@ end
 
 ```ruby
 
-class CustomerRepository
-
-  def all
-    # it returns a list of customers
-  end
-
-  def find(id) # id has to be an integer
-    # it returns a specific customer by ID
-  end
-
-  def create(new_customer) # new_customer is an instance of Customer
-    # it creates a new customer, returns nothing
-  end
-
-  def delete(id) # id has to be an integer
-    # it deletes a customer, returns nothing
-  end
-
-  def update(customer) # customer is an instance of Customer
-    # it updates the customer attributes, returns nothing
-  end
-
-end
-
 # 1. it returns a list of customers
 
 repo = CustomerRepository.new
