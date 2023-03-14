@@ -2,12 +2,10 @@
 context "test all method" do
     it "returns all the owner names" do
         repo = OwnerRepository.new
-        owner = repo.all
-        @names = []
-        owner.each do |name|
-            @names.push(name.owner_name)
-        end
-        expect(@names).to eq ["owner1","owner2","owner3]
+        owners = repo.all #this tests the all method specifically the first id owner name and email
+        expect(owners[0].id).to eq ("1")
+        expect(owners[0].owner_name).to eq ("owner1")
+        expect(owners[0].owner_email).to eq ("owner1@test.com")
     end
     it "returns "all emails for the owners" do
         repo = OwnerRepository.new
