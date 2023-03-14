@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Confirmed!</title>
+        <link rel="stylesheet" href="/style.css" >
+    </head>
+    <body>
+        <p>You have successfully listede your property!</p>
+    </body>
+    <a href="/">Go back</a>
+</html>

@@ -25,4 +25,8 @@ describe Application do
       expect(response.status).to eq(200)
     end
   end
+
+  context 'GET /space' do
+    it "Returns the"
+  end
 end

@@ -9,11 +9,11 @@ INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 3', 'cus
 INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 4', 'customer4@test.com');
 
 INSERT INTO owners (owner_name, owner_email)
-VALUES ('Owner 1', 'owner1@test.com');
+VALUES ('Owner 1', 'owner1@example.com');
 INSERT INTO owners (owner_name, owner_email)
-VALUES ('Owner 2', 'owner2@test.com');
+VALUES ('Owner 2', 'owner2@example.com');
 INSERT INTO owners (owner_name, owner_email)
-VALUES ('Owner 3', 'owner3@test.com');
+VALUES ('Owner 3', 'owner3@example.com');
 
 INSERT INTO properties (property_name, property_description, property_price, property_avail_date, property_status, owner_id)
 VALUES ('Property 1', 'One bedroom flat', '50', '2023-04-01', 'available' ,1);
