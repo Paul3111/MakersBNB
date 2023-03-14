@@ -219,7 +219,7 @@ customers = repo.all
 expect(customers.length).to eq 5
 expect(customers[-1].id).to eq 5
 expect(customers[-1].customer_name).to eq "Customer 5"
-expect(customers[-1].customers_email).to eq "customer5@test.com"
+expect(customers[-1].customer_email).to eq "customer5@test.com"
 
 # 6. id has to be an integer
 
