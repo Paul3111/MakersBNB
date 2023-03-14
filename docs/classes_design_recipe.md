@@ -170,3 +170,19 @@ end
 # Test Examples for CustomerRepository
 
 
+```ruby
+
+# 1. it returns a list of customers
+
+repo = CustomerRepository.new
+customers = repo.all
+
+expect(customers.length).to eq 4
+expect(customers[0].id).to eq 1
+expect(customers[0].customer_name).to eq "Customer 1"
+expect(customers[0].customer_email).to eq "customer1@test.com"
+expect(customers[-1].id).to eq 4
+expect(customers[-1].customer_name).to eq "Customer 4"
+expect(customers[-1].customer_email).to eq "customer4@test.com"
+
+```
