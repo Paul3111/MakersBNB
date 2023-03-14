@@ -1,4 +1,5 @@
-require 'property_model'
+require_relative './database_connection'
+require_relative './property_model'
 
 class PropertyRepository
 
@@ -36,11 +37,8 @@ class PropertyRepository
     end
   
     def create(new_property) # new_property is an instance of Property
-      sql = 'INSERT INTO properties (property_name, property_description, property_price,
-        property_avail_date, property_status, owner_id)
-      VALUES ($1, $2, $3, $4, $5, $6);'
-      params = [new_property.property_name, new_property.property_description, 
-        new_property.property_price, new_property.property_avail_date, new_property.property_status, new_property.owner_id]
+      sql = 'INSERT INTO properties (property_name, property_description, property_price, property_avail_date, property_status, owner_id) VALUES ($1, $2, $3, $4, $5, $6);'
+      params = [new_property.property_name, new_property.property_description, new_property.property_price, new_property.property_avail_date, new_property.property_status, new_property.owner_id]
       result = DatabaseConnection.exec_params(sql, params)
       return nil
     end

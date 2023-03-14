@@ -1,5 +1,4 @@
 require 'property_repository'
-require 'property_model'
 
 def reset_properties_table
   seed_sql = File.read('spec/seeds_test.sql')
@@ -74,7 +73,6 @@ RSpec.describe PropertyRepository do
 
     it "Updates a property." do
       repo = PropertyRepository.new
-      #properties = repo.all
       match = repo.find(3)
       expect(match.property_description).to include 'Three bedroom'
     end

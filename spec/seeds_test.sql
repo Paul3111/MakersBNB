@@ -3,10 +3,10 @@
 
 TRUNCATE TABLE customers, owners, properties, bookings RESTART IDENTITY;
 
-INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 1', 'customer1@test.com');
-INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 2', 'customer2@test.com');
-INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 3', 'customer3@test.com');
-INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 4', 'customer4@test.com');
+INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 1', 'customer1@example.com');
+INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 2', 'customer2@example.com');
+INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 3', 'customer3@example.com');
+INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 4', 'customer4@example.com');
 
 INSERT INTO owners (owner_name, owner_email)
 VALUES ('Owner 1', 'owner1@example.com');
