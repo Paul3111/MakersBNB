@@ -29,14 +29,14 @@ RSpec.describe PropertyRepository do
     it "Creates a new property." do
       repo = PropertyRepository.new
       properties = repo.all
-      new_property = Property.new
-      new_property.property_name = 'Wogan House'
-      new_property.property_description = '20 rooms available'
-      new_property.property_price = 1500
-      new_property.property_avail_date = '2023-03-20'
-      new_property.property_status = 'Available'
-      new_property.owner_id = 1
-      repo.create(new_property)
+      new_space = Property.new
+      new_space.property_name = 'Wogan House'
+      new_space.property_description = '20 rooms available'
+      new_space.property_price = 1500
+      new_space.property_avail_date = '2023-03-20'
+      new_space.property_status = 'Available'
+      new_space.owner_id = 1
+      repo.create(new_space)
       properties = repo.all
       latest_property = repo.find(4)
       expect(properties.length).to eq 4
@@ -46,23 +46,23 @@ RSpec.describe PropertyRepository do
     it "Deletes a property." do
       repo = PropertyRepository.new
       properties = repo.all
-      new_property1 = Property.new
-      new_property1.property_name = 'Wogan House'
-      new_property1.property_description = '20 rooms available'
-      new_property1.property_price = 1500
-      new_property1.property_avail_date = '2023-03-20'
-      new_property1.property_status = 'Available'
-      new_property1.owner_id = 1
-      repo.create(new_property1)
+      new_space1 = Property.new
+      new_space1.property_name = 'Wogan House'
+      new_space1.property_description = '20 rooms available'
+      new_space1.property_price = 1500
+      new_space1.property_avail_date = '2023-03-20'
+      new_space1.property_status = 'Available'
+      new_space1.owner_id = 1
+      repo.create(new_space1)
 
-      new_property2 = Property.new
-      new_property2.property_name = 'Harris Manor'
-      new_property2.property_description = '4 rooms available'
-      new_property2.property_price = 350
-      new_property2.property_avail_date = '2023-03-22'
-      new_property2.property_status = 'Available'
-      new_property2.owner_id = 2
-      repo.create(new_property2)
+      new_space2 = Property.new
+      new_space2.property_name = 'Harris Manor'
+      new_space2.property_description = '4 rooms available'
+      new_space2.property_price = 350
+      new_space2.property_avail_date = '2023-03-22'
+      new_space2.property_status = 'Available'
+      new_space2.owner_id = 2
+      repo.create(new_space2)
 
       repo.delete(4)
       properties = repo.all
