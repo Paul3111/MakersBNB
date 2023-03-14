@@ -19,10 +19,23 @@ context "test all method" do
 end
 context "test find method" do
     it "finds the owner name" do
+        repo = OwnerRepository.new
+         owner = repo.find(1)
+       expect(owner.owner_name).to eq("Owner 1")
+       expect(owner.owner_email).to eq("owner1@test.com")
+     end
+    it "finds the owner name" do
        repo = OwnerRepository.new
         owner = repo.find(2)
-      expect(owner.owner_name).to eq("Owner 2")
+       expect(owner.owner_name).to eq("Owner 2")
        expect(owner.owner_email).to eq("owner2@test.com")
     end
+    it "finds the owner name" do
+        repo = OwnerRepository.new
+         owner = repo.find(3)
+       expect(owner.owner_name).to eq("Owner 3")
+       expect(owner.owner_email).to eq("owner3@test.com")
+     end
+  
 
 end 
