@@ -212,7 +212,7 @@ expect{ repo.create(8) }.to raise_error "new-customer has to be an instance of C
 repo = CustomerRepository.new
 new_customer = Customer.new
 new_customer.customer_name = "Customer 5"
-new_customer.customer_email = "customer5@test.com"
+new_customer.customer_email = "customer5@example.com"
 repo.create(new_customer)
 customers = repo.all
 
