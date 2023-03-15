@@ -43,7 +43,7 @@ class PropertyRepository
       property.property_price, property.property_avail_date, property.property_status,
       property.owner_id]
     result = DatabaseConnection.exec_params(sql, params)
-    return result
+    return nil
   end
   
   def delete(id) # id has to be an integer
