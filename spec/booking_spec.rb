@@ -5,15 +5,13 @@ def reset_tables
     connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
     connection.exec(seed_sql)
 end
-   describe BookingRepository do
-      before(:each) do
-          reset_bookings_tables
-      end
-    end
- 
+  
 RSpec.describe BookingRepository do
+    before(:each) do
+        reset_tables
+    end
   context 'to test the all method it'    
-    it 'returns a list of bookings' do
+    it 'returns all bookings' do
         repo = BookingRepository.new
         bookings = repo.all
         expect(bookings.length).to eq(5)
@@ -30,6 +28,20 @@ RSpec.describe BookingRepository do
             expect(booked.id).to eq(3)
             expect(booked.booking_date).to eq("2023-04-01")
             expect(booked.booking_status).to eq("rejected")
+        end
+    end
+    context 'test create method' do
+        it "should show the new booking" do
+            repo = BookingRepository.new
+            new_booking = Booking.new
+            new_booking.booking_date = '2023-07-14'
+            new_booking.booking_status = 'pending'
+            new_booking.property_id = 3
+            new_booking.customer_id = 3
+            repo.create(new_booking)
+            all_booking = repo.all
+            expect(all_booking.last.id).to eq(6)
+            expect(all_booking.last.booking_date).to eq("2023-07-14")
         end
     end
 
