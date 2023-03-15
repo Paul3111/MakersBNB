@@ -22,7 +22,15 @@ class Application < Sinatra::Base
   get '/space/form' do
     return erb(:property_form)
   end
-
+  get '/space' do
+    @dates = [["2023-04-01","2023-04-07","2023-04-09"], ["2023-04-02","2023-04-09","2023-04-14"], ["2023-04-23","2023-04-24","2023-04-25"]]
+    repo = PropertyRepository.new
+    space = repo.find(params[:id])
+    @space_name = space.property_name
+    @space_description = space.property_description
+    @space_price = space.property_price
+    return erb(:specific_space)
+  end
   post '/space/form' do
     if invalid_request_parameters_property?
       status 400
