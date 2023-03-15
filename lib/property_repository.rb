@@ -55,11 +55,11 @@ class PropertyRepository
   
   def update(property) # property is an instance of Property
     # it updates the property attributes, returns nothing
-    sql = 'UPDATE properties SET property_name = $1, property_description = $1,
-      property_price = $1, property_avail_date = $1, property_status = $1, owner_id = $1;'
-    params = params = [new_property.property_name, new_property.property_description, 
-      new_property.property_price, new_property.property_avail_date,
-      new_property.property_status, new_property.owner_id]
+    sql = 'UPDATE properties SET property_name = $1, property_description = $2,
+      property_price = $3, property_avail_date = $4, property_status = $5, owner_id = $6;'
+    params = params = [property.property_name, property.property_description, 
+      property.property_price, property.property_avail_date,
+      property.property_status, property.owner_id]
     result = DatabaseConnection.exec_params(sql, params)
     return nil
   end

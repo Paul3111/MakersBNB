@@ -19,6 +19,23 @@ class Application < Sinatra::Base
     return erb(:all_spaces)
   end
 
+  get '/space/:id/edit' do # Gets the form to edit the space
+    return erb(:edit_space_form)
+  end
+
+  post '/space/:id/edit' do # Updates selected space
+    repo = PropertyRepository.new
+    @property_name = [:property_name]
+    @property_description = [:property_description]
+    @property_price = [:property_price]
+    @property_avail_date = [:property_price]
+    @property_status = [:property_price]
+    @owner_id = [:property_price]
+    selected_space = repo.find(2)
+    repo.update(selected_space)
+    return erb(:edit_space_confirmation)
+  end
+
   get '/space/form' do
     return erb(:property_form)
   end

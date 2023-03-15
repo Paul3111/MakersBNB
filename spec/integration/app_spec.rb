@@ -43,4 +43,26 @@ describe Application do
         expect(response.body).to include '<title>Confirmed!</title>'
       end
     end
+
+  context 'GET spaces/:id/edit' do
+    it "Returns the form to update a space." do
+      response = get('/space/2/edit')
+      expect(response.status).to eq 200
+      expect(response.body).to include '<input type="text" name="property_name" placeholder="Property name" required><br>'
+    end
+  end
+
+  context 'POST spaces/:id/edit' do
+    it "Updates a space and redirects to the confirmation page." do
+      response = post('/space/2/edit',
+      property_description: 'Two large bedroom flat',
+      property_price: 90,
+      owner_id: 2,
+      )
+      expect(response.status).to eq 200
+      expect(response.body).to include 'Property 2'
+      expect(response.body).to include 'Two large bedrom flat'
+      expect(response.body).to include '90'
+    end
+  end
 end
