@@ -88,7 +88,7 @@ describe Application do
       it "lists all dates for property 2 " do
         response = get('/space?id=2')
         expect(response.status).to eq 200
-        expect(response.body).to include  '<p>["2023-04-02", "2023-04-09", "2023-04-14"]</p> ' 
+        expect(response.body).to include  '<p>["2023-04-02", "2023-04-09", "2023-04-14"]</p>' 
       end
       it "lists all dates for property 3 " do
         response = get('/space?id=3')
