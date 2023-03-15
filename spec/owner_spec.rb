@@ -5,14 +5,12 @@ def reset_tables
     connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
     connection.exec(seed_sql)
 end
-   describe OwnerRepository do
-      before(:each) do
-          reset_owners_tables
-      end
-   end 
 RSpec.describe OwnerRepository do
- 
+    before(:each) do
+        reset_tables
+    end
     context "test all method" do
+
         it "returns all the owner names" do
             repo = OwnerRepository.new
             owners = repo.all #this tests the all method specifically the first id owner name and email
