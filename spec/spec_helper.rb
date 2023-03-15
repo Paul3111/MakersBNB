@@ -1,3 +1,4 @@
+
 ENV['ENV'] = 'test'
 
 require 'database_connection'
