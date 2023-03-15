@@ -170,3 +170,93 @@ end
 # Test Examples for CustomerRepository
 
 
+```ruby
+
+# 1. it returns a list of customers
+
+repo = CustomerRepository.new
+customers = repo.all
+
+expect(customers.length).to eq 4
+expect(customers[0].id).to eq 1
+expect(customers[0].customer_name).to eq "Customer 1"
+expect(customers[0].customer_email).to eq "customer1@test.com"
+expect(customers[-1].id).to eq 4
+expect(customers[-1].customer_name).to eq "Customer 4"
+expect(customers[-1].customer_email).to eq "customer4@test.com"
+
+# 2. id has to be an integer
+
+repo = CustomerRepository.new
+
+expect{ repo.find("hello") }.to raise_error "ID has to be an Integer!"
+
+# 3. it returns a specific customer by ID
+
+repo = CustomerRepository.new
+customer = repo.find(1)
+
+expect(customer.length).to eq 1
+expect(customer[0].id).to eq 1
+expect(customer[0].customer_name).to eq "Customer 1"
+expect(customer[0].customer_email).to eq "customer1@test.com"
+
+# 4. new_customer is an instance of Customer
+
+repo = CustomerRepository.new
+
+expect{ repo.create(8) }.to raise_error "new-customer has to be an instance of Customer!"
+
+# 5. it creates a new customer, returns nothing
+
+repo = CustomerRepository.new
+new_customer = Customer.new
+new_customer.customer_name = "Customer 5"
+new_customer.customer_email = "customer5@example.com"
+repo.create(new_customer)
+customers = repo.all
+
+expect(customers.length).to eq 5
+expect(customers[-1].id).to eq 5
+expect(customers[-1].customer_name).to eq "Customer 5"
+expect(customers[-1].customer_email).to eq "customer5@test.com"
+
+# 6. id has to be an integer
+
+repo = CustomerRepository.new
+
+expect{ repo.delete("hi mom") }.to raise_error "ID has to be an Integer!"
+
+# 7. it deletes a customer, returns nothing
+
+repo = CustomerRepository.new
+repo.delete(1)
+customers = repo.all
+
+expect(customers.length).to eq 3
+expect(customers[0].id).to eq 2
+expect(customers[0].customer_name).to eq "Customer 2"
+expect(customers[0].customer_email).to eq "customer2@test.com"
+
+# 8. customer is an instance of Customer
+
+repo = CustomerRepository.new
+
+expect{ repo.update("hello") }.to raise_error "customer has to be an instance of Customer!"
+
+# 9. it updates the customer attributes, returns nothing
+
+repo = CustomerRepository.new
+customer = repo.find(4)[0]
+customer.customer_name = "Johnny Depp"
+customer.customer_email = "star@gmail.com"
+repo.update(customer)
+customers = repo.all
+
+expect(customers.length).to eq 4
+expect(customers[-1].id).to eq 4
+expect(customers[-1].customer_name).to eq "Johnny Depp"
+expect(customers[-1].customer_email).to eq "star@gmail.com"
+
+
+```
