@@ -44,25 +44,24 @@ describe Application do
       end
     end
 
-  context 'GET spaces/:id/edit' do
-    it "Returns the form to update a space." do
-      response = get('/space/2/edit')
+  context 'GET space/edit/' do # Paul
+    it "Returns the form to update a space with ID 2." do
+      response = get('/space/edit?id=2')
       expect(response.status).to eq 200
-      expect(response.body).to include '<input type="text" name="property_name" placeholder="Property name" required><br>'
+      expect(response.body).to include '<input type="text" name="property_name" placeholder="Property name"><br>'
     end
   end
 
-  context 'POST spaces/:id/edit' do
-    it "Updates a space and redirects to the confirmation page." do
-      response = post('/space/2/edit',
+  context 'POST space/edit' do # Paul
+    it "Updates a space with ID 2 and redirects to the updated space page." do
+      response = post('/space/edit',
+      id: 2,
+      property_name: 'Property 2',
       property_description: 'Two large bedroom flat',
-      property_price: 90,
-      owner_id: 2,
+      property_price: 90
       )
-      expect(response.status).to eq 200 
-      expect(response.body).to include 'Property 2'
-      expect(response.body).to include 'Two large bedrom flat'
-      expect(response.body).to include '90'
+      expect(response.status).to eq 302
+      expect(response).to be_redirect
     end
   end
     context "returns specifc property page" do
@@ -81,17 +80,17 @@ describe Application do
     end
 
     context "GET /space/dates" do
-      it "lists all dates for property1 " do
+      it "lists all dates for property 1 " do
         response = get('/space?id=1')
         expect(response.status).to eq 200
         expect(response.body).to include  '<p>["2023-04-01", "2023-04-07", "2023-04-09"]</p>'
       end
-      it "lists all dates for property2 " do
+      it "lists all dates for property 2 " do
         response = get('/space?id=2')
         expect(response.status).to eq 200
         expect(response.body).to include  '<p>["2023-04-02", "2023-04-09", "2023-04-14"]</p> ' 
       end
-      it "lists all dates for property3 " do
+      it "lists all dates for property 3 " do
         response = get('/space?id=3')
         expect(response.status).to eq 200
         expect(response.body).to include   '<p>["2023-04-23", "2023-04-24", "2023-04-25"]</p>'  
