@@ -26,5 +26,9 @@ class BookingRepository
     booking.customer_id = result_set[0]['customer_id'].to_i
     return booking
   end
- 
+  def create(booking)
+    sql = 'INSERT INTO bookings (booking_date, booking_status, property_id, customer_id) VALUES ($1, $2, $3, $4);'
+    result_set = DatabaseConnection.exec_params(sql, [booking.booking_date, booking.booking_status, booking.property_id, booking.customer_id])
+
+  end
 end
