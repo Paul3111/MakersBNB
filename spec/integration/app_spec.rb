@@ -59,10 +59,44 @@ describe Application do
       property_price: 90,
       owner_id: 2,
       )
-      expect(response.status).to eq 200
+      expect(response.status).to eq 200 
       expect(response.body).to include 'Property 2'
       expect(response.body).to include 'Two large bedrom flat'
       expect(response.body).to include '90'
     end
   end
+    context "returns specifc property page" do
+      it "returns page for property 1" do
+        response = get('space?id=1')
+        expect(response.status).to eq(200)
+        expect(response.body).to include '<h1>Property 1</h1>'
+      end
+    end
+    context "returns specifc property page" do
+      it "returns page for property 2" do
+        response = get('space?id=2')
+        expect(response.status).to eq(200)
+        expect(response.body).to include '<h1>Property 2</h1>'
+      end
+    end
+
+    context "GET /space/dates" do
+      it "lists all dates for property1 " do
+        response = get('/space?id=1')
+        expect(response.status).to eq 200
+        expect(response.body).to include  '<p>["2023-04-01", "2023-04-07", "2023-04-09"]</p>'
+      end
+      it "lists all dates for property2 " do
+        response = get('/space?id=2')
+        expect(response.status).to eq 200
+        expect(response.body).to include  '<p>["2023-04-02", "2023-04-09", "2023-04-14"]</p> ' 
+      end
+      it "lists all dates for property3 " do
+        response = get('/space?id=3')
+        expect(response.status).to eq 200
+        expect(response.body).to include   '<p>["2023-04-23", "2023-04-24", "2023-04-25"]</p>'  
+      end
+      
+    end 
+   
 end
