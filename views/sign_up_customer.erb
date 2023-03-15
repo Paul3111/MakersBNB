@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up to MakersBnB</title>
+  </head>
+  <body>
+    <h1>MakersBnB</h1>
+    <h3 strong>Welcome, Space Hunter!</h3>
+    <form method="POST" action="/sign_up/customer">
+      <label for="customer_name">Name: </label>
+      <input id="customer_name" type="text" name="customer_name" required><br><br>
+      <label for="customer_email">Email: </label>
+      <input id="customer_email" name="customer_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br><br>
+      <input type="submit" value="Sign up!"><br><br>
+      <a href="/sign_in">Go back</a>
+    </form>
+  </body>
+</html>
