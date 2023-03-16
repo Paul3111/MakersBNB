@@ -1,4 +1,4 @@
-<form action="/space/edit" method="POST">
+<!-- <form action="/space/edit" method="POST">
   <input type="integer" name="id" placeholder="Property ID" required><br>
   <input type="text" name="property_name" placeholder="Property name"><br>
   <input type="text" name="property_description" placeholder="Description"><br>
@@ -7,4 +7,27 @@
   <input type="submit" value="Submit the form">
   <br><br>
   <a href="/space/all">Go back</a>
+</form> -->
+
+<form action="/space/edit" method="POST">
+  <input type="integer" name="id" placeholder="Property ID" required>
+  <input type="text" name="property_name" placeholder="Update property name" required>
+  <input type="submit" value="Edit">
+  <br>
 </form>
+
+<form action="/space/edit" method="POST">
+  <input type="integer" name="id" placeholder="Property ID" required>
+  <input type="text" name="property_description" placeholder="Update description", required>
+  <input type="submit" value="Edit">
+  <br>
+</form>
+
+<form action="/space/edit" method="POST">
+  <input type="integer" name="id" placeholder="Property ID" required>
+  <input type="float" name="property_price" placeholder="Update price" required>
+  <input type="submit" value="Edit">
+  <br>
+</form>
+
+<a href="/space/all">Go back</a>
