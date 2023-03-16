@@ -13,12 +13,12 @@
       <div>
         <a href="/space?id=<%=record.id%>"><%=record.property_name%></a> |
         <%= record.property_description %> |
-        £<%= record.property_price %> per night |
-        <%= record.property_status.capitalize %>
+        £<%= record.property_price %> per night | <a href="/space/edit?id=<%=record.id%>">Edit</a> <!-- The edit button will only be visible when the owern logs in /-->
+        <!-- <%= record.property_status.capitalize %> -->
         <p>============================================</p>
         </div>
     <% end %>
-    <br><a href="/space/form">List a property</a>
+    <br><a href="/space/form">List a property</a><br>
   </body>
 
   <body>
