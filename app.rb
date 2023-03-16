@@ -12,6 +12,7 @@ class Application < Sinatra::Base
   end
 
   get '/' do
+    return erb(:sign_in) if @current_user_id.nil?
     return erb(:index)
   end
 
@@ -97,6 +98,7 @@ class Application < Sinatra::Base
     new_customer = Customer.new
     new_customer.customer_name = params[:customer_name]
     new_customer.customer_email = params[:customer_email]
+    new_customer.customer_password = params[:customer_password]
     customers = repo.all
     customers.each do |record|
       if record.customer_name == new_customer.customer_name
@@ -114,6 +116,7 @@ class Application < Sinatra::Base
     new_owner = Owner.new
     new_owner.owner_name = params[:owner_name]
     new_owner.owner_email = params[:owner_email]
+    new_owner.owner_password = params[:owner_password]
     owners = repo.all
     owners.each do |record|
       if record.owner_name == new_owner.owner_name
@@ -125,5 +128,69 @@ class Application < Sinatra::Base
     repo.create(new_owner)
     return erb(:successful_account_creation)
   end
+
+  # Route blocks for the sign in process
+
+  def current_user_id
+    @current_user_id = nil
+  end
+
+  get "/log_in/customer" do
+    return erb(:log_in_customer)
+  end
+
+  get "/log_in/owner" do
+    return erb(:log_in_owner)
+  end
+
+  post "/log_in/customer" do
+    repo = CustomerRepository.new
+    customers = repo.all
+    customers.each do |customer_record|
+      if customer_record.customer_name == params['customer_name']
+        if customer_record.customer_email == params['customer_email']
+          if customer_record.customer_password == params['customer_password']
+            @current_user_id = customer_record.id
+            return erb(:index)
+          else
+            @current_user_id = nil
+            return "Password is not correct! Try again."
+          end
+        else
+          @current_user_id = nil
+          return "Email is not correct! Try again."
+        end
+      else
+        @current_user_id = nil
+        return "Name is not correct! Try again."
+      end
+    end
+  end
+
+  post "/log_in/owner" do
+    repo = OwnerRepository.new
+    owners = repo.all
+    owners.each do |owner_record|
+      if owner_record.owner_name == params['owner_name']
+        if owner_record.owner_email == params['owner_email']
+          if owner_record.owner_password == params['owner_password']
+            @current_user_id = owner_record.id
+            return erb(:index)
+          else
+            @current_user_id = nil
+            return "Password is not correct! Try again."
+          end
+        else
+          @current_user_id = nil
+          return "Email is not correct! Try again."
+        end
+      else
+        @current_user_id = nil
+        return "Name is not correct! Try again."
+      end
+    end
+  end
+
+
 
 end
