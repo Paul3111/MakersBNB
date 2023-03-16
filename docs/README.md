@@ -1,14 +1,21 @@
-# MakersBnB Project Team Air
+# MakersBnB Project - Team Air
 
 Our task was to design an app with a similar functionality to that of Airbnb. 
 
-There is a list of basic requirements with the option for more advanced features.
+There was a list of basic requirements with the option for more advanced features. Here is a basic outline:
+Property owners to be able to list their properties with a description, price and date availability.
+Customers to be able to request a booking for one night, and it could be approved by the owner if
+the chosen date was available.
 
+There were also some "nice to haves" which could be completed if there was time (this project lasted for one week) including signing up, and signing in with passwords. Not forgetting making the pages look nice!
 
+Our database is in PostgreSQL and is called makersbnb_test and we have four tables: owners, customers, properties and bookings.
 
+Our app language is Ruby, with HTML for the browser.
 
-Database in Postgres:
-Our database is called makersbnb_test
+We work on the TDD principle and use RSpec for testing.
 
-Tables:
-We have four tables: owners, customers, properties and bookings
+In the spirit of creating a skateboard rather than a car, or indeed a bogey before the train,
+we are creating the most basic features first, the "MVP", that is, the minimum viable product.
+The client in real life would wish to see status updates, and our MVP is the first tangible update.
+
