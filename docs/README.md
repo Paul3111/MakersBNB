@@ -19,3 +19,9 @@ In the spirit of creating a skateboard rather than a car, or indeed a bogey befo
 we are creating the most basic features first, the "MVP", that is, the minimum viable product.
 The client in real life would wish to see status updates, and our MVP is the first tangible update.
 
+This was the first group project here at Makers and it was a learning experience for all of us.
+Here we are:
+AMANN23
+francescoGuglielmi
+KumarS14
+Paul3111
