@@ -13,15 +13,35 @@ class Application < Sinatra::Base
     return erb(:index)
   end
 
-  get '/space/all' do
+  get '/space/all' do # Paul
     repo = PropertyRepository.new
     @all_spaces = repo.all
     return erb(:all_spaces)
   end
 
-  get '/space/form' do
+  get '/space/edit' do # Gets the form to edit the space - Paul
+    return erb(:edit_space_form)
+  end
+
+  post '/space/edit' do # Updates selected space - Paul
+    repo = PropertyRepository.new
+    id = params[:id]
+    property_name = params[:property_name]
+    property_description = params[:property_description]
+    property_price = params[:property_price]
+
+    selected_space = repo.find(id)
+    selected_space.property_name = property_name
+    selected_space.property_description = property_description
+    selected_space.property_price = property_price
+    repo.update(selected_space)
+    redirect "/space?id=#{id}"
+  end
+
+  get '/space/form' do # This is used when an owner lists a property - Paul
     return erb(:property_form)
   end
+
   get '/space' do
     @dates = [["2023-04-01","2023-04-07","2023-04-09"], ["2023-04-02","2023-04-09","2023-04-14"], ["2023-04-23","2023-04-24","2023-04-25"]]
     repo = PropertyRepository.new
@@ -31,7 +51,8 @@ class Application < Sinatra::Base
     @space_price = space.property_price
     return erb(:specific_space)
   end
-  post '/space/form' do
+
+  post '/space/form' do # Paul
     if invalid_request_parameters_property?
       status 400
       return ''
@@ -49,7 +70,7 @@ class Application < Sinatra::Base
     return erb(:confirmation_page_property)
   end
 
-  def invalid_request_parameters_property?
+  def invalid_request_parameters_property? # Paul
     return true if params[:property_name] == nil || params[:property_description] == nil || params[:property_status] == nil
     return true if params[:property_name] == "" || params[:property_description] ==  "" || params[:property_status] == ""  
     return false
