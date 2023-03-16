@@ -19,10 +19,12 @@ class Application < Sinatra::Base
   get '/space/all' do # Paul
     repo = PropertyRepository.new
     @all_spaces = repo.all
+    @current_user_status
     return erb(:all_spaces)
   end
 
   get '/space/edit' do # Gets the form to edit the space - Paul
+    return "You don't have the authorization to edit properties." if @current_user_status
     return erb(:edit_space_form)
   end
 
@@ -131,8 +133,9 @@ class Application < Sinatra::Base
 
   # Route blocks for the sign in process
 
-  def current_user_id
+  def current_user_details
     @current_user_id = nil
+    @current_user_status = nil
   end
 
   get "/log_in/customer" do
@@ -151,6 +154,7 @@ class Application < Sinatra::Base
         if customer_record.customer_email == params['customer_email']
           if customer_record.customer_password == params['customer_password']
             @current_user_id = customer_record.id
+            @current_user_status = "customer"
             return erb(:index)
           else
             @current_user_id = nil
@@ -175,6 +179,7 @@ class Application < Sinatra::Base
         if owner_record.owner_email == params['owner_email']
           if owner_record.owner_password == params['owner_password']
             @current_user_id = owner_record.id
+            @current_user_status = "owner"
             return erb(:index)
           else
             @current_user_id = nil
@@ -191,6 +196,13 @@ class Application < Sinatra::Base
     end
   end
 
+  # Log out button
+
+  post "/log_out" do
+    @current_user_id = nil
+    @current_user_status = nil
+    return erb(:sign_in)
+  end
 
 
 end
