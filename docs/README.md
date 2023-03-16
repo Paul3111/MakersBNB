@@ -1,24 +1,14 @@
-# MakersBnB Team Air
+# MakersBnB Project Team Air
 
-The aim with this project is to write a program that has a similar functionality to that of Airbnb.
+Our task was to design an app with a similar functionality to that of Airbnb. 
+
+There is a list of basic requirements with the option for more advanced features.
 
 
 
-## Setup
 
-```bash
-# Install gems
-bundle install
+Database in Postgres:
+Our database is called makersbnb_test
 
-# Run the tests
-rspec
-
-# Run the server (better to do this in a separate terminal).
-rackup
-```
-
-Databases:
-
-Using PostgreSQL.
-Our database is called 
-makersbnb_test
+Tables:
+We have four tables: owners, customers, properties and bookings
