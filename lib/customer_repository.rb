@@ -32,7 +32,7 @@ class CustomerRepository
 
   def create(new_customer) 
     raise "new-customer has to be an instance of Customer!" unless new_customer.class == Customer
-    query = "INSERT INTO customers (customer_name, customer_email, customer_password) VALUES ($1, $2);" #$?
+    query = "INSERT INTO customers (customer_name, customer_email, customer_password) VALUES ($1, $2, $3);"
     sql_params = [new_customer.customer_name, new_customer.customer_email, new_customer.customer_password]
     DatabaseConnection.exec_params(query, sql_params)
     return nil
@@ -47,8 +47,8 @@ class CustomerRepository
 
   def update(customer) 
     raise "customer has to be an instance of Customer!" unless customer.class == Customer
-    query = "UPDATE customers SET customer_name = $1, customer_email = $2 WHERE id = $3;" #$?
-    sql_params = [customer.customer_name, customer.customer_email, customer.id, customer.customer_password]
+    query = "UPDATE customers SET customer_name = $1, customer_email = $2, customer_password = $3 WHERE id = $4;"
+    sql_params = [customer.customer_name, customer.customer_email, customer.customer_password, customer.id]
     DatabaseConnection.exec_params(query, sql_params)
     return nil
   end

@@ -29,7 +29,7 @@ RSpec.describe OwnerRepository do
         owners = repo.all #this tests the all method specifically the first id owner name and email
         expect(owners[0].id).to eq ("1")
         expect(owners[0].owner_name).to eq ("Owner 1")
-        expect(owners[0].owner_email).to eq ("owner1@test.com")
+        expect(owners[0].owner_email).to eq ("owner1@example.com")
         expect(owners[0].owner_password).to eq ('Homunculus20')
     end
   
