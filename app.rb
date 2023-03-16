@@ -98,6 +98,7 @@ class Application < Sinatra::Base
     new_customer = Customer.new
     new_customer.customer_name = params[:customer_name]
     new_customer.customer_email = params[:customer_email]
+    new_customer.customer_password = params[:customer_password]
     customers = repo.all
     customers.each do |record|
       if record.customer_name == new_customer.customer_name
@@ -115,6 +116,7 @@ class Application < Sinatra::Base
     new_owner = Owner.new
     new_owner.owner_name = params[:owner_name]
     new_owner.owner_email = params[:owner_email]
+    new_owner.owner_password = params[:owner_password]
     owners = repo.all
     owners.each do |record|
       if record.owner_name == new_owner.owner_name
@@ -147,8 +149,13 @@ class Application < Sinatra::Base
     customers.each do |customer_record|
       if customer_record.customer_name == params['customer_name']
         if customer_record.customer_email == params['customer_email']
-          @current_user_id = customer_record.id
-          return erb(:index)
+          if customer_record.customer_password == params['customer_password']
+            @current_user_id = customer_record.id
+            return erb(:index)
+          else
+            @current_user_id = nil
+            return "Password is not correct! Try again."
+          end
         else
           @current_user_id = nil
           return "Email is not correct! Try again."
@@ -166,8 +173,13 @@ class Application < Sinatra::Base
     owners.each do |owner_record|
       if owner_record.owner_name == params['owner_name']
         if owner_record.owner_email == params['owner_email']
-          @current_user_id = owner_record.id
-          return erb(:index)
+          if owner_record.owner_password == params['owner_password']
+            @current_user_id = owner_record.id
+            return erb(:index)
+          else
+            @current_user_id = nil
+            return "Password is not correct! Try again."
+          end
         else
           @current_user_id = nil
           return "Email is not correct! Try again."

@@ -15,6 +15,8 @@
       <input id="customer_name" type="text" name="customer_name" required><br><br>
       <label for="customer_email">Email: </label>
       <input id="customer_email" name="customer_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br><br>
+      <label for="password">Password:</label>
+      <input id="password" name="customer_password" type="password" minlength="8" pattern="[a-zA-Z0-9.-_!?]{8,20}" required><br><br>
       <input type="submit" value="Log in!"><br><br>
       <a href="/sign_in">Go back</a>
     </form>
