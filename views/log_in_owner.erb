@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in to your account!</title>
+  </head>
+  <body>
+    <h1>MakersBnB</h1>
+    <h3 strong>Welcome again, Space Sharer!</h3>
+    <p>(Note: you must be an owner with an existing account to successfully submit this form)</p>
+    <br>
+    <form method="POST" action="/log_in/owner">
+      <label for="owner_name">Name: </label>
+      <input id="owner_name" type="text" name="owner_name" required><br><br>
+      <label for="owner_email">Email: </label>
+      <input id="owner_email" name="owner_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br><br>
+      <input type="submit" value="Log in!"><br><br>
+      <a href="/sign_in">Go back</a>
+    </form>
+  </body>
+</html>

@@ -12,6 +12,7 @@ class Application < Sinatra::Base
   end
 
   get '/' do
+    return erb(:sign_in) if @current_user_id.nil?
     return erb(:index)
   end
 
@@ -125,5 +126,59 @@ class Application < Sinatra::Base
     repo.create(new_owner)
     return erb(:successful_account_creation)
   end
+
+  # Route blocks for the sign in process
+
+  def current_user_id
+    @current_user_id = nil
+  end
+
+  get "/log_in/customer" do
+    return erb(:log_in_customer)
+  end
+
+  get "/log_in/owner" do
+    return erb(:log_in_owner)
+  end
+
+  post "/log_in/customer" do
+    repo = CustomerRepository.new
+    customers = repo.all
+    customers.each do |customer_record|
+      if customer_record.customer_name == params['customer_name']
+        if customer_record.customer_email == params['customer_email']
+          @current_user_id = customer_record.id
+          return erb(:index)
+        else
+          @current_user_id = nil
+          return "Email is not correct! Try again."
+        end
+      else
+        @current_user_id = nil
+        return "Name is not correct! Try again."
+      end
+    end
+  end
+
+  post "/log_in/owner" do
+    repo = OwnerRepository.new
+    owners = repo.all
+    owners.each do |owner_record|
+      if owner_record.owner_name == params['owner_name']
+        if owner_record.owner_email == params['owner_email']
+          @current_user_id = owner_record.id
+          return erb(:index)
+        else
+          @current_user_id = nil
+          return "Email is not correct! Try again."
+        end
+      else
+        @current_user_id = nil
+        return "Name is not correct! Try again."
+      end
+    end
+  end
+
+
 
 end
