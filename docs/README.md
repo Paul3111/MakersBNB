@@ -1,8 +1,8 @@
-# MakersBnB Project Seed
+# MakersBnB Team Air
 
-This repo contains the seed codebase for the MakersBnB project in Ruby (using Sinatra and RSpec).
+The aim with this project is to write a program that has a similar functionality to that of Airbnb.
 
-Someone in your team should fork this seed repo to their Github account. Everyone in the team should then clone this fork to their local machine to work on it.
+
 
 ## Setup
 
@@ -19,3 +19,6 @@ rackup
 
 Databases:
 
+Using PostgreSQL.
+Our database is called 
+makersbnb_test

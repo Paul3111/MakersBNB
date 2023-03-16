@@ -11,6 +11,7 @@ class CustomerRepository
       customer.id = record['id'].to_i
       customer.customer_name = record['customer_name']
       customer.customer_email = record['customer_email']
+      customer.customer_password = record['customer_password']
       customers << customer
     end
     return customers
@@ -25,13 +26,14 @@ class CustomerRepository
     customer.id = record['id'].to_i
     customer.customer_name = record['customer_name']
     customer.customer_email = record['customer_email']
+    customer.customer_password = record['customer_password']
     return [customer]
   end
 
   def create(new_customer) 
     raise "new-customer has to be an instance of Customer!" unless new_customer.class == Customer
-    query = "INSERT INTO customers (customer_name, customer_email) VALUES ($1, $2);"
-    sql_params = [new_customer.customer_name, new_customer.customer_email]
+    query = "INSERT INTO customers (customer_name, customer_email, customer_password) VALUES ($1, $2);" #$?
+    sql_params = [new_customer.customer_name, new_customer.customer_email, new_customer.customer_password]
     DatabaseConnection.exec_params(query, sql_params)
     return nil
   end
@@ -45,8 +47,8 @@ class CustomerRepository
 
   def update(customer) 
     raise "customer has to be an instance of Customer!" unless customer.class == Customer
-    query = "UPDATE customers SET customer_name = $1, customer_email = $2 WHERE id = $3;"
-    sql_params = [customer.customer_name, customer.customer_email, customer.id]
+    query = "UPDATE customers SET customer_name = $1, customer_email = $2 WHERE id = $3;" #$?
+    sql_params = [customer.customer_name, customer.customer_email, customer.id, customer.customer_password]
     DatabaseConnection.exec_params(query, sql_params)
     return nil
   end
