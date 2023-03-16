@@ -21,9 +21,11 @@ describe CustomerRepository do
       expect(customers[0].id).to eq 1
       expect(customers[0].customer_name).to eq "Customer 1"
       expect(customers[0].customer_email).to eq "customer1@example.com"
+      expect(customers[0].customer_password).to eq "Styrofoam98"
       expect(customers[-1].id).to eq 4
       expect(customers[-1].customer_name).to eq "Customer 4"
       expect(customers[-1].customer_email).to eq "customer4@example.com"
+      expect(customers[-1].customer_password).to eq "Giggidy69"
     end
   end
 
@@ -42,6 +44,7 @@ describe CustomerRepository do
       expect(customer[0].id).to eq 1
       expect(customer[0].customer_name).to eq "Customer 1"
       expect(customer[0].customer_email).to eq "customer1@example.com"
+      expect(customer[0].customer_password).to eq "Styrofoam98"
     end
   end
 
@@ -57,6 +60,7 @@ describe CustomerRepository do
       new_customer = Customer.new
       new_customer.customer_name = "Customer 5"
       new_customer.customer_email = "customer5@example.com"
+      new_customer.customer_password = "Muppet54"
       repo.create(new_customer)
       customers = repo.all
 
@@ -64,6 +68,7 @@ describe CustomerRepository do
       expect(customers[-1].id).to eq 5
       expect(customers[-1].customer_name).to eq "Customer 5"
       expect(customers[-1].customer_email).to eq "customer5@example.com"
+      expect(customers[-1].customer_password).to eq "Muppet54"
     end
   end
 
@@ -83,6 +88,7 @@ describe CustomerRepository do
       expect(customers[0].id).to eq 2
       expect(customers[0].customer_name).to eq "Customer 2"
       expect(customers[0].customer_email).to eq "customer2@example.com"
+      expect(customers[0].customer_password). to eq "Decapitate12"
     end
   end
 
@@ -98,6 +104,7 @@ describe CustomerRepository do
       customer = repo.find(4)[0]
       customer.customer_name = "Johnny Depp"
       customer.customer_email = "star@gmail.com"
+      customer.customer_password = "Ganglion42"
       repo.update(customer)
       customers = repo.all
 
@@ -105,6 +112,7 @@ describe CustomerRepository do
       expect(customers[-1].id).to eq 4
       expect(customers[-1].customer_name).to eq "Johnny Depp"
       expect(customers[-1].customer_email).to eq "star@gmail.com"
+      expect(customers[-1].customer_password).to eq "Ganglion42"
     end
   end
 

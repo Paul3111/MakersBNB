@@ -4,13 +4,15 @@
 CREATE TABLE customers (
     id SERIAL PRIMARY KEY,
     customer_name TEXT,
-    customer_email TEXT
+    customer_email TEXT,
+    customer_password TEXT
 );
 
 CREATE TABLE owners (
     id SERIAL PRIMARY KEY,
     owner_name TEXT,
-    owner_email TEXT
+    owner_email TEXT,
+    owner_password TEXT
 );
 
 CREATE TABLE properties (

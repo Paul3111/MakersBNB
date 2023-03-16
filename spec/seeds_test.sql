@@ -3,17 +3,17 @@
 
 TRUNCATE TABLE customers, owners, properties, bookings RESTART IDENTITY;
 
-INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 1', 'customer1@example.com');
-INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 2', 'customer2@example.com');
-INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 3', 'customer3@example.com');
-INSERT INTO customers (customer_name, customer_email) VALUES ('Customer 4', 'customer4@example.com');
+INSERT INTO customers (customer_name, customer_email, customer_password) VALUES ('Customer 1', 'customer1@example.com', 'Styrofoam98');
+INSERT INTO customers (customer_name, customer_email, customer_password) VALUES ('Customer 2', 'customer2@example.com', 'Decapitate12');
+INSERT INTO customers (customer_name, customer_email, customer_password) VALUES ('Customer 3', 'customer3@example.com', 'Nonsense13');
+INSERT INTO customers (customer_name, customer_email, customer_password) VALUES ('Customer 4', 'customer4@example.com', 'Giggidy69');
 
-INSERT INTO owners (owner_name, owner_email)
-VALUES ('Owner 1', 'owner1@example.com');
-INSERT INTO owners (owner_name, owner_email)
-VALUES ('Owner 2', 'owner2@example.com');
-INSERT INTO owners (owner_name, owner_email)
-VALUES ('Owner 3', 'owner3@example.com');
+INSERT INTO owners (owner_name, owner_email, owner_password)
+VALUES ('Owner 1', 'owner1@example.com', 'Homunculus20');
+INSERT INTO owners (owner_name, owner_email, owner_password)
+VALUES ('Owner 2', 'owner2@example.com', 'Badgers00');
+INSERT INTO owners (owner_name, owner_email, owner_password)
+VALUES ('Owner 3', 'owner3@example.com', 'Mollycoddle83');
 
 INSERT INTO properties (property_name, property_description, property_price, property_avail_date, property_status, owner_id)
 VALUES ('Property 1', 'One bedroom flat', '50', '2023-04-01', 'available' ,1);
