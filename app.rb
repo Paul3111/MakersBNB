@@ -33,9 +33,9 @@ class Application < Sinatra::Base
     property_price = params[:property_price]
 
     selected_space = repo.find(id)
-    selected_space.property_name = property_name
-    selected_space.property_description = property_description
-    selected_space.property_price = property_price
+    property_name ? selected_space.property_name = property_name : selected_space.property_name = property_name = ""
+    property_description ? selected_space.property_description = property_description : selected_space.property_description = ""
+    property_price ? selected_space.property_price = property_price : selected_space.property_price = ""
     repo.update(selected_space)
     redirect "/space?id=#{id}"
   end

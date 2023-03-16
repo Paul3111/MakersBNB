@@ -119,17 +119,19 @@ describe Application do
   end
 
   context 'POST space/edit' do # Paul
-    it "Updates a space with ID 2 and redirects to the updated space page." do
-      response = post('/space/edit',
-      id: 2,
-      property_name: 'Property 2',
-      property_description: 'Two large bedroom flat',
-      property_price: 90
-      )
+    it "Updates price for a space with ID 2 and redirects to the updated space page." do
+      response = post('/space/edit', id: 2, property_price: 90)
+      expect(response.status).to eq 302
+      expect(response).to be_redirect
+    end
+
+    it "Updates description for a space with ID 2 and redirects to the updated space page." do
+      response = post('/space/edit', id: 2, property_description: 'Two large bedroom flat')
       expect(response.status).to eq 302
       expect(response).to be_redirect
     end
   end
+
   context "returns specifc property page" do
     it "returns page for property 1" do
       response = get('space?id=1')
@@ -155,7 +157,7 @@ describe Application do
       it "lists all dates for property2 " do
         response = get('/space?id=2')
         expect(response.status).to eq 200
-        expect(response.body).to include  '<p>["2023-04-02", "2023-04-09", "2023-04-14"]</p> ' 
+        expect(response.body).to include  '<p>["2023-04-02", "2023-04-09", "2023-04-14"]</p>' 
       end
       it "lists all dates for property3 " do
         response = get('/space?id=3')
