@@ -50,10 +50,20 @@
         margin-top: 20px;
       }
 
+
       img {
         max-width: 400px;
         border-radius: 15px;
       }
+
+=======
+        table,tr,td{
+        border: 1px solid #eee;
+        border-collapse: collapse;
+        padding: 0.5rem;
+        
+    }  
+   
 
     </style>
   </head>
@@ -63,9 +73,23 @@
       <h2> <%=@space_name%> </h2>
     <p><%=@space_description%></p>
     <p><%=@space_price%></p> 
+
     <p><%=@dates[params[:id].to_i - 1]%></p>
     <p> <img src="<%= @images[params[:id].to_i - 1] %>"> </p>
+
+    <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+            <tr>
+             <th>Available Dates: </th>
+            </tr>
+         <%@dates[params[:id].to_i - 1].each do |date|%>
+            <tr>
+                <td><%=date%></td>
+            </tr>
+         <%end%>
+        </table>
+
     <br>
     
   </body>
 </html>
+

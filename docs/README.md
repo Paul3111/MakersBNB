@@ -11,6 +11,8 @@ There were also some "nice to haves" which could be completed if there was time 
 
 Our database is in PostgreSQL and is called makersbnb_test and we have four tables: owners, customers, properties and bookings.
 
+Link to the diagram: https://lucid.app/lucidchart/9550b79e-eead-49e9-b3f0-2ed273ce1020/edit?viewport_loc=-209%2C45%2C3082%2C1516%2C0_0&invitationId=inv_d46c0ae1-23f3-482b-a892-c1473d402530
+
 Our app language is Ruby, with HTML for the browser.
 
 We work on the TDD principle and use RSpec for testing.
@@ -21,7 +23,7 @@ The client in real life would wish to see status updates, and our MVP is the fir
 
 This was the first group project here at Makers and it was a learning experience for all of us.
 Here we are:
-AMANN23
-francescoGuglielmi
-KumarS14
-Paul3111
+AMANN23 (Adnan Mann)
+francescoGuglielmi (Francesco Guglielmi)
+KumarS14 (Sonjay Kumar)
+Paul3111 (Paul Lazar)
