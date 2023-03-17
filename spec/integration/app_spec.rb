@@ -35,7 +35,7 @@ describe Application do
       response = get('/space/all')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include 'Property 2'
+      expect(response.body).to include 'Lake View'
     end
   end
 
@@ -49,7 +49,7 @@ describe Application do
 
   context 'POST /space/form' do
     it "Lists a space and returns the confirmation message." do
-      response = post('/space/form', property_name: 'Mason Manor', property_description: '4 bedrooms house', property_price: 250, property_avail_date: '2023-04-17', property_status: 'available', owner_id: 2)
+      response = post('/space/form', property_name: 'Mason Manor', property_description: '4 bedroom house', property_price: 250, property_avail_date: '2023-04-17', property_status: 'available', owner_id: 2)
       expect(response.status).to eq 200
       expect(response.body).to include '<title>Confirmed!</title>'
     end

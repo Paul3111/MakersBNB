@@ -14,8 +14,8 @@ RSpec.describe PropertyRepository do
     it "Returns all properties." do
       repo = PropertyRepository.new
       properties = repo.all
-      expect(properties[0].property_name).to eq 'Property 1'
-      expect(properties[1].property_name).to eq 'Property 2'
+      expect(properties[0].property_name).to eq 'The Old Loft'
+      expect(properties[1].property_name).to eq 'Lake View'
       expect(properties.last.property_price).to eq 35.0
     end
 
@@ -23,7 +23,7 @@ RSpec.describe PropertyRepository do
       repo = PropertyRepository.new
       properties = repo.all
       property = repo.find(2)
-      expect(property.property_name).to eq 'Property 2'
+      expect(property.property_name).to eq 'Lake View'
     end
 
     it "Creates a new property." do
