@@ -1,15 +1,32 @@
 <style>
   body {
     background: linear-gradient(45deg, #946F09, #943009);
-    font-size: 30px;
+    font-size: 27px;
     font-family: Sono, monospace ;
     color: white;
+    text-align: center;
 }
+
+h1 {
+  font-size: 60px;
+  color: #092E94;
+  text-align: center;
+  font-family: Lobster, monospace;
+  margin-bottom: 30px;
+}
+
+
 </style>
 
 <html>
-<head></head>
+<head>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Sono&display=swap" rel="stylesheet">
+</head>
+
 <body>
+<h1>MakersBnB</h1>
 <form action="/space/edit" method="POST">
   <input type="integer" name="id" placeholder="Property ID" required>
   <input type="text" name="property_name" placeholder="Update property name" required>

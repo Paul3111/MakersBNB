@@ -4,7 +4,33 @@
     font-size: 20px;
     font-family: Sono, monospace ;
     color: black;
+  
 }
+
+h1 {
+  font-size: 60px;
+  color: #092E94;
+  text-align: center;
+  font-family: Lobster, monospace;
+}
+
+h3 {
+  text-align: center;
+  margin-top: -25px;
+  font-size: 30px;
+}
+
+p {
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 0px;
+  font-size: 15px;
+}
+
+.less_left {
+  margin-left: 30px;
+}
+
 </style>
 
 <html>
@@ -12,22 +38,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in to your account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Sono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sono&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>MakersBnB</h1>
-    <h3 strong>Welcome again, Space Hunter!</h3>
+    <h1 >MakersBnB</h1>
+    <h3><strong>Welcome again, Space Hunter!</strong></h3>
     
-    <p>(Note: you must be a customer with an existing account to successfully submit this form)</p>
+    <p >(Note: you must be a customer with an existing account to successfully submit this form)</p>
     <br>
-    <form method="POST" action="/log_in/customer">
-      <label for="customer_name">Name: </label>
-      <input id="customer_name" type="text" name="customer_name" required><br><br>
-      <label for="customer_email">Email: </label>
-      <input id="customer_email" name="customer_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br><br>
-      <label for="password">Password:</label>
-      <input id="password" name="customer_password" type="password" minlength="8" pattern="[a-zA-Z0-9.-_!?]{8,20}" required><br><br>
-      <input type="submit" value="Log in!"><br><br>
-      <a href="/sign_in">Go back</a>
-    </form>
+    <div class="less_left">
+      <form method="POST" action="/log_in/customer">
+        <label for="customer_name">Name: </label>
+        <input id="customer_name" type="text" name="customer_name" required><br><br>
+        <label for="customer_email">Email: </label>
+        <input id="customer_email" name="customer_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br><br>
+        <label for="password">Password:</label>
+        <input id="password" name="customer_password" type="password" minlength="8" pattern="[a-zA-Z0-9.-_!?]{8,20}" required><br><br>
+        <input type="submit" value="Log in!"><br><br>
+        <a href="/sign_in">Go back</a>
+      </form>
+    </div>
   </body>
 </html>

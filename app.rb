@@ -23,7 +23,7 @@ class Application < Sinatra::Base
   get '/space/all' do
     repo = PropertyRepository.new
     @all_spaces = repo.all
-    @current_user_status
+    @images = ["https://www.pettyson.co.uk/images/blog_posts/different-types-of-property/block_of_flats.jpg", "https://media.product.which.co.uk/prod/images/original/gm-559b247c-6c97-4692-85be-0a32e2a811e0-istock-123727292-1.jpeg", "https://www.propertypriceadvice.co.uk/wp-content/uploads/2016/06/Flats.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/26/Noel_Park_cottage_flats.JPG", "https://wp.inews.co.uk/wp-content/uploads/2018/02/houses.jpg", "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/48373839.jpg?k=9648094f5fee8c2cbf00c099d6aacc9f0a09a8a92f0bf778219af5f8f9dd5002&o="]
     return erb(:all_spaces)
   end
 
@@ -53,6 +53,7 @@ class Application < Sinatra::Base
 
   get '/space' do
     @dates = [["2023-04-01","2023-04-07","2023-04-09"], ["2023-04-02","2023-04-09","2023-04-14"], ["2023-04-23","2023-04-24","2023-04-25"]]
+    @images = ["https://www.pettyson.co.uk/images/blog_posts/different-types-of-property/block_of_flats.jpg", "https://media.product.which.co.uk/prod/images/original/gm-559b247c-6c97-4692-85be-0a32e2a811e0-istock-123727292-1.jpeg", "https://www.propertypriceadvice.co.uk/wp-content/uploads/2016/06/Flats.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/26/Noel_Park_cottage_flats.JPG", "https://wp.inews.co.uk/wp-content/uploads/2018/02/houses.jpg", "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/48373839.jpg?k=9648094f5fee8c2cbf00c099d6aacc9f0a09a8a92f0bf778219af5f8f9dd5002&o="]
     repo = PropertyRepository.new
     space = repo.find(params[:id])
     @space_name = space.property_name
