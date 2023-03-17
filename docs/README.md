@@ -24,6 +24,7 @@ The client in real life would wish to see status updates, and our MVP is the fir
 This was the first group project here at Makers and it was a learning experience for all of us.
 Here we are:
 AMANN23 (Adnan Mann)
+Fiona-1981 (Fiona Wiggins)
 francescoGuglielmi (Francesco Guglielmi)
 KumarS14 (Sonjay Kumar)
 Paul3111 (Paul Lazar)
