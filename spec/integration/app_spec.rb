@@ -97,12 +97,12 @@ describe Application do
     end
 
     it "displays an unsuccess page if one of the details inputted exists already" do  
-      response = post("/sign_up/customer", customer_name: "Francesco", customer_email: "customer1@example.com")
+      response = post("/sign_up/customer", customer_name: "Francesco", customer_email: "roger@parsontech.com", customer_password: "Something123")
 
       expect(response.status).to eq 200
       expect(response.body).to include 'That email address exists already! Choose a different email'
 
-      response = post("/sign_up/customer", customer_name: "Customer 1", customer_email: "jiggles@example.com")
+      response = post("/sign_up/customer", customer_name: "Roger Parson", customer_email: "jiggles@example.com", customer_password: "Something123")
 
       expect(response.status).to eq 200
       expect(response.body).to include 'That customer name exists already! Choose a different name'
@@ -135,7 +135,7 @@ describe Application do
     it "returns page for property 1" do
       response = get('space?id=1')
       expect(response.status).to eq(200)
-      expect(response.body).to include '<h1>Property 1</h1>'
+      expect(response.body).to include '<h2> The Old Loft </h2>'
     end
   end
 
@@ -143,7 +143,7 @@ describe Application do
     it "returns page for property 2" do
       response = get('space?id=2')
       expect(response.status).to eq(200)
-      expect(response.body).to include '<h1>Property 2</h1>'
+      expect(response.body).to include '<h2> Lake View </h2>'
     end
   end
 

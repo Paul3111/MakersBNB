@@ -21,6 +21,7 @@
       body {
         height: 100%;
         background: linear-gradient(45deg, #946F09, #943009);
+        background-size: cover;
         font-family: Sono, monospace;
         color: white;
         text-align: center;
@@ -56,7 +57,7 @@
         border-radius: 15px;
       }
 
-=======
+
         table,tr,td{
         border: 1px solid #eee;
         border-collapse: collapse;
@@ -74,9 +75,6 @@
     <p><%=@space_description%></p>
     <p><%=@space_price%></p> 
 
-    <p><%=@dates[params[:id].to_i - 1]%></p>
-    <p> <img src="<%= @images[params[:id].to_i - 1] %>"> </p>
-
     <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
             <tr>
              <th>Available Dates: </th>
@@ -87,6 +85,10 @@
             </tr>
          <%end%>
         </table>
+
+    <!-- <p><%=@dates[params[:id].to_i - 1]%></p> -->
+    <p> <img src="<%= @images[params[:id].to_i - 1] %>"> </p>
+
 
     <br>
     

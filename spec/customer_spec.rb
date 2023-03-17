@@ -23,7 +23,7 @@ describe CustomerRepository do
       expect(customers[0].customer_email).to eq "roger@parsontech.com"
       expect(customers[0].customer_password).to eq "Styrofoam98"
       expect(customers[-1].id).to eq 4
-      expect(customers[-1].customer_name).to eq "Bertha Oragedottir"
+      expect(customers[-1].customer_name).to eq "Bertha Orangedottir"
       expect(customers[-1].customer_email).to eq "berty@fruity.com"
       expect(customers[-1].customer_password).to eq "Giggidy69"
     end
