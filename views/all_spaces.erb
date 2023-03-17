@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<br><a href="/log_in/customer">Logout</a> |
-<a href="/space/form">List a property</a> | <br>
+
   <!-- some other buttons here at the top -->
 <style>
   html {
@@ -16,34 +15,52 @@
     text-align: center;
   }
 
-  h2 {
-    font-size: 50px;
+  h1 {
+    margin-top: 30px;
+    font-size: 60px;
+    color: #092E94;
+    font-family: Lobster, monospace;
   }
 
   a {
     color: black;
     font-size: 22px;
   }
+
+  img {
+    border-radius: 15px;
+    max-width: 300px;
+  }
 </style>
 
 <html>
   <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Sono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sono&display=swap" rel="stylesheet">
 
     <title>Available spaces</title>
 
         <link rel="stylesheet" href="/style.css" >
   </head>
   <body>
-
+  
+  <br><a href="/log_in/customer">Logout</a> | <a href="/space/form">List a property</a> | <br>
+      <h1> MakersBnB </h1>
+      
+        <% n = 0%>
     <h2><% @all_spaces.each do |record| %></h2>
       <div>
         <a href="/space?id=<%=record.id%>"><%=record.property_name%></a> |
         <%= record.property_description %> |
         £<%= record.property_price %> per night | <a href="/space/edit?id=<%=record.id%>">Edit</a>
+        <br><br>
+        <img src="<%= @images[n] %>">
         <p>============================================</p>
+        <% n += 1%>
         </div>
     <% end %>
 
