@@ -16,19 +16,19 @@ class Application < Sinatra::Base
     return erb(:index)
   end
 
-  get '/space/all' do # Paul
+  get '/space/all' do
     repo = PropertyRepository.new
     @all_spaces = repo.all
     @current_user_status
     return erb(:all_spaces)
   end
 
-  get '/space/edit' do # Gets the form to edit the space - Paul
+  get '/space/edit' do # Gets the form to edit the space
     return "You don't have the authorization to edit properties." if @current_user_status
     return erb(:edit_space_form)
   end
 
-  post '/space/edit' do # Updates selected space - Paul
+  post '/space/edit' do # Updates selected space
     repo = PropertyRepository.new
     id = params[:id]
     property_name = params[:property_name]
@@ -43,7 +43,7 @@ class Application < Sinatra::Base
     redirect "/space?id=#{id}"
   end
 
-  get '/space/form' do # This is used when an owner lists a property - Paul
+  get '/space/form' do # This is used when an owner lists a property
     return erb(:property_form)
   end
 
@@ -57,7 +57,7 @@ class Application < Sinatra::Base
     return erb(:specific_space)
   end
 
-  post '/space/form' do # Paul
+  post '/space/form' do
     if invalid_request_parameters_property?
       status 400
       return ''
@@ -75,7 +75,7 @@ class Application < Sinatra::Base
     return erb(:confirmation_page_property)
   end
 
-  def invalid_request_parameters_property? # Paul
+  def invalid_request_parameters_property?
     return true if params[:property_name] == nil || params[:property_description] == nil || params[:property_status] == nil
     return true if params[:property_name] == "" || params[:property_description] ==  "" || params[:property_status] == ""  
     return false

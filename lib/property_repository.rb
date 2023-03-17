@@ -52,20 +52,6 @@ class PropertyRepository
     result = DatabaseConnection.exec_params(sql, [id])
     return nil
   end
-=begin
-  def update(property) # property is an instance of Property
-    # it updates the property attributes, returns nothing
-    sql = 'UPDATE properties SET ' 
-    sql += 'property_name = $1, ' if property.property_name
-    sql += 'property_description = $2, ' if property.property_description
-    sql += 'property_price = $3 ' if property.property_price
-    sql += 'WHERE id = $4;' 
-    params = [property.property_name, property.property_description, 
-      property.property_price, property.id]
-    result = DatabaseConnection.exec_params(sql, params)
-    return nil
-  end
-=end
 
   def update(property) # property is an instance of Property
     # it updates the property attributes, returns nothing

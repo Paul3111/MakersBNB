@@ -43,7 +43,7 @@ describe Application do
     it "Returns the form." do
       response = get('/space/form')
       expect(response.status).to eq 200
-      expect(response.body).to include '<input type="submit" value="Submit the form">'
+      expect(response.body).to include '<form action="/space/form" method="POST">'
     end
   end
 
@@ -109,16 +109,15 @@ describe Application do
     end
   end
 
-
-  context 'GET space/edit/' do # Paul
+  context 'GET space/edit/' do
     it "Returns the form to update a space with ID 2." do
       response = get('/space/edit?id=2')
       expect(response.status).to eq 200
-      expect(response.body).to include '<input type="text" name="property_name" placeholder="Property name"><br>'
+      expect(response.body).to include '<form action="/space/edit" method="POST">'
     end
   end
 
-  context 'POST space/edit' do # Paul
+  context 'POST space/edit' do
     it "Updates price for a space with ID 2 and redirects to the updated space page." do
       response = post('/space/edit', id: 2, property_price: 90)
       expect(response.status).to eq 302

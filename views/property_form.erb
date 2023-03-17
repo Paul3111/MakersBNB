@@ -1,12 +1,73 @@
-<form action="/space/form" method="POST">
-  <input type="text" name="property_name" placeholder="Property name"><br>
-  <input type="text" name="property_description" placeholder="Description"><br>
-  <input type="float" name="property_price" placeholder="Price per night"><br>
-  <input type="text" name="property_avail_date" placeholder="Date when available"><br> <!-- here to use date instead of text? To test -->
-  <input type="text" name="property_status" placeholder="Available/Taken"><br>
-  <input type="integer" name="owner_id" placeholder="Owner ID"><br><br>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Property listing</title>
+    <style>
+      html {
+        height: 100%;
+      }
 
-  <input type="submit" value="Submit the form">
-  <br><br>
-  <a href="/">Go back</a>
-</form>
+      body {
+        height: 100%;
+        background: linear-gradient(45deg, #946F09, #943009);
+        font-family: Sono, monospace;
+        color: white;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 40px;
+      }
+
+      form {
+        display: inline-block;
+        margin-top: 50px;
+        text-align: left;
+      }
+
+      input[type="text"],
+      input[type="float"],
+      input[type="integer"],
+      input[type="submit"] {
+        display: block;
+        margin: 10px 0;
+        padding: 5px;
+        width: 300px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        background-color: #FFB900;
+        color: white;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #F09819;
+      }
+
+      a {
+        color: black;
+        font-size: 22px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>List your property here!</h2>
+    <form action="/space/form" method="POST">
+      <input type="text" name="property_name" placeholder="Property name" required>
+      <input type="text" name="property_description" placeholder="Description" required>
+      <input type="text" name="property_price" placeholder="Price per night" required>
+      <input type="text" name="property_avail_date" placeholder="Date when available" required>
+      <input type="text" name="property_status" placeholder="Available/Taken" required>
+      <input type="text" name="owner_id" placeholder="Owner ID" required>
+      <input type="submit" value="Submit">
+    </form>
+    <br>
+    <a href="/space/all">Go back</a>
+  </body>
+</html>

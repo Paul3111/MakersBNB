@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<br><a href="/log_in/customer">Logout</a> |
+<a href="/space/form">List a property</a> | <br>
+  <!-- some other buttons here at the top -->
 <style>
   html {
     height: 100%;
@@ -29,10 +33,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Sono&display=swap" rel="stylesheet">
 
     <title>Available spaces</title>
-        <!--
-            Head to https://github.com/makersacademy/web-applications/blob/main/pills/loading_css_or_static_files.md
-            If you're wondering how the CSS file below is being loaded.
-        -->
+
         <link rel="stylesheet" href="/style.css" >
   </head>
   <body>
@@ -41,13 +42,10 @@
       <div>
         <a href="/space?id=<%=record.id%>"><%=record.property_name%></a> |
         <%= record.property_description %> |
-        £<%= record.property_price %> per night |<a href="/space/edit?id=<%=record.id%>">Edit</a> <!-- The edit button will only be visible when the owern logs in /-->
-        <!-- <%= record.property_status.capitalize %> -->
+        £<%= record.property_price %> per night | <a href="/space/edit?id=<%=record.id%>">Edit</a>
         <p>============================================</p>
         </div>
     <% end %>
-    <br><a href="/space/form">List a property</a><br>
-    <br><a href="/">Home</a>
 
   </body>
 </html>
