@@ -1,9 +1,47 @@
+  <!-- maybe a picture for each property? -->
+  <!-- to add some "real data" for users, owners, properties in the DB-->
+  <!-- to display the dates properly, not in array format (iterate and separate in boxes) -->
+
+<!DOCTYPE html>
 <html>
-    <body>
-        <h1><%=@space_name%></h1>
-        <p><%=@space_description%></p>
-        <p><%=@space_price%></p> 
-        <p><%=@dates[params[:id].to_i - 1]%></p>
-    </body>
-    <br><a href="/space/all">Go back</a>
+  <head>
+    <title>Space Details</title>
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        height: 100%;
+        background: linear-gradient(45deg, #946F09, #943009);
+        font-family: Sono, monospace;
+        color: white;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 50px;
+        margin-top: 50px;
+      }
+
+      p {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: black;
+        font-size: 22px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%=@space_name%></h1>
+    <p><%=@space_description%></p>
+    <p><%=@space_price%></p> 
+    <p><%=@dates[params[:id].to_i - 1]%></p>
+    <br>
+    <a href="/space/all">Go back</a>
+  </body>
 </html>
