@@ -19,12 +19,12 @@ describe CustomerRepository do
 
       expect(customers.length).to eq 4
       expect(customers[0].id).to eq 1
-      expect(customers[0].customer_name).to eq "Customer 1"
-      expect(customers[0].customer_email).to eq "customer1@example.com"
+      expect(customers[0].customer_name).to eq "Roger Parson"
+      expect(customers[0].customer_email).to eq "roger@parsontech.com"
       expect(customers[0].customer_password).to eq "Styrofoam98"
       expect(customers[-1].id).to eq 4
-      expect(customers[-1].customer_name).to eq "Customer 4"
-      expect(customers[-1].customer_email).to eq "customer4@example.com"
+      expect(customers[-1].customer_name).to eq "Bertha Oragedottir"
+      expect(customers[-1].customer_email).to eq "berty@fruity.com"
       expect(customers[-1].customer_password).to eq "Giggidy69"
     end
   end
@@ -42,8 +42,8 @@ describe CustomerRepository do
 
       expect(customer.length).to eq 1
       expect(customer[0].id).to eq 1
-      expect(customer[0].customer_name).to eq "Customer 1"
-      expect(customer[0].customer_email).to eq "customer1@example.com"
+      expect(customer[0].customer_name).to eq "Roger Parson"
+      expect(customer[0].customer_email).to eq "roger@parsontech.com"
       expect(customer[0].customer_password).to eq "Styrofoam98"
     end
   end
@@ -86,8 +86,8 @@ describe CustomerRepository do
 
       expect(customers.length).to eq 3
       expect(customers[0].id).to eq 2
-      expect(customers[0].customer_name).to eq "Customer 2"
-      expect(customers[0].customer_email).to eq "customer2@example.com"
+      expect(customers[0].customer_name).to eq "Horace Umarell"
+      expect(customers[0].customer_email).to eq "hozza@bizzo.com"
       expect(customers[0].customer_password). to eq "Decapitate12"
     end
   end

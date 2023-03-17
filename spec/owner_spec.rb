@@ -17,8 +17,8 @@ RSpec.describe OwnerRepository do
       repo = OwnerRepository.new
       owners = repo.all #this tests the all method specifically the first id owner name and email
       expect(owners[0].id).to eq ("1")
-      expect(owners[0].owner_name).to eq ("Owner 1")
-      expect(owners[0].owner_email).to eq ("owner1@example.com")
+      expect(owners[0].owner_name).to eq ("Magnus Raikonenn")
+      expect(owners[0].owner_email).to eq ("magnus@magtech.com")
       expect(owners[0].owner_password).to eq ('Homunculus20')
     end
   end
@@ -28,8 +28,8 @@ RSpec.describe OwnerRepository do
         repo = OwnerRepository.new
         owners = repo.all #this tests the all method specifically the first id owner name and email
         expect(owners[0].id).to eq ("1")
-        expect(owners[0].owner_name).to eq ("Owner 1")
-        expect(owners[0].owner_email).to eq ("owner1@example.com")
+        expect(owners[0].owner_name).to eq ("Magnus Raikonenn")
+        expect(owners[0].owner_email).to eq ("magnus@magtech.com")
         expect(owners[0].owner_password).to eq ('Homunculus20')
     end
   
@@ -40,7 +40,7 @@ RSpec.describe OwnerRepository do
       owner.each do |the_email|
           @email.push(the_email.owner_email)
       end
-      expect(@email).to eq ["owner1@example.com","owner2@example.com","owner3@example.com"]
+      expect(@email).to eq ["magnus@magtech.com","patrice@propertymoguls.com","neve@magic.com"]
     end
   end
 
@@ -48,15 +48,15 @@ RSpec.describe OwnerRepository do
     it "finds the owner name" do
        repo = OwnerRepository.new
        owner = repo.find(1)
-       expect(owner.owner_name).to eq("Owner 1")
-       expect(owner.owner_email).to eq("owner1@example.com")
+       expect(owner.owner_name).to eq("Magnus Raikonenn")
+       expect(owner.owner_email).to eq("magnus@magtech.com")
     end
     
     it "finds the owner name" do
        repo = OwnerRepository.new
        owner = repo.find(2)
-       expect(owner.owner_name).to eq("Owner 2")
-       expect(owner.owner_email).to eq("owner2@example.com")
+       expect(owner.owner_name).to eq("Patrice Horrobin")
+       expect(owner.owner_email).to eq("patrice@propertymoguls.com")
     end
   end
   
@@ -64,22 +64,22 @@ RSpec.describe OwnerRepository do
     it "finds the owner name" do
       repo = OwnerRepository.new
       owner = repo.find(1)
-      expect(owner.owner_name).to eq("Owner 1")
-      expect(owner.owner_email).to eq("owner1@example.com")
+      expect(owner.owner_name).to eq("Magnus Raikonenn")
+      expect(owner.owner_email).to eq("magnus@magtech.com")
     end
 
     it "finds the owner name" do
       repo = OwnerRepository.new
       owner = repo.find(2)
-      expect(owner.owner_name).to eq("Owner 2")
-      expect(owner.owner_email).to eq("owner2@example.com")
+      expect(owner.owner_name).to eq("Patrice Horrobin")
+      expect(owner.owner_email).to eq("patrice@propertymoguls.com")
     end
 
     it "finds the owner name" do
       repo = OwnerRepository.new
       owner = repo.find(3)
-      expect(owner.owner_name).to eq("Owner 3")
-      expect(owner.owner_email).to eq("owner3@example.com")
+      expect(owner.owner_name).to eq("Niamph Cohen")
+      expect(owner.owner_email).to eq("neve@magic.com")
     end
   end 
 end

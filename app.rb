@@ -16,6 +16,10 @@ class Application < Sinatra::Base
     return erb(:index)
   end
 
+  get '/about_us' do
+    return erb(:about_us)
+  end
+
   get '/space/all' do
     repo = PropertyRepository.new
     @all_spaces = repo.all
