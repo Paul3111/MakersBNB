@@ -34,14 +34,31 @@
         font-size: 22px;
         margin-top: 20px;
       }
+        table,tr,td{
+        border: 1px solid #eee;
+        border-collapse: collapse;
+        padding: 0.5rem;
+        
+    }  
+   
     </style>
   </head>
   <body>
     <h1><%=@space_name%></h1>
     <p><%=@space_description%></p>
     <p><%=@space_price%></p> 
-    <p><%=@dates[params[:id].to_i - 1]%></p>
+    <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+            <tr>
+             <th>Available Dates: </th>
+            </tr>
+         <%@dates[params[:id].to_i - 1].each do |date|%>
+            <tr>
+                <td><%=date%></td>
+            </tr>
+         <%end%>
+        </table>
     <br>
     <a href="/space/all">Go back</a>
   </body>
 </html>
+
