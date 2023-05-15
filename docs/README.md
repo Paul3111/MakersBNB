@@ -22,7 +22,7 @@ we are creating the most basic features first, the "MVP", that is, the minimum v
 The client in real life would wish to see status updates, and our MVP is the first tangible update.
 
 This was the first group project here at Makers and it was a learning experience for all of us.
-Here we are:
+Here we are (alphabetical order):
 AMANN23 (Adnan Mann)
 Fiona-1981 (Fiona Wiggins)
 francescoGuglielmi (Francesco Guglielmi)
